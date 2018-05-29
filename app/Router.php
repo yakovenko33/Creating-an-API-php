@@ -19,6 +19,8 @@ final Class Router
         // TODO: Implement __wakeup() method.
     }
 
+
+
     public static function getInstance()
     {
         if (null ===  static::$instance){
@@ -90,6 +92,13 @@ final Class Router
            return mb_strtolower($_SERVER['REQUEST_METHOD']).'Action';
         }
 
+        $this->ApiKey = 'botvot33';
+
         return $actionName;
+    }
+
+    public function getApiKey()
+    {
+        return $this->ApiKey;
     }
 }
