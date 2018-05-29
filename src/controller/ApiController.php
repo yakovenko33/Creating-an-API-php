@@ -5,35 +5,42 @@ use src\service;
 
 class ApiController
 {
-    public function testAction()
+    /*GET*/
+    public function getAction()
     {
         $model = new Model();
         $film = $model->getFilm();
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            echo $film;
-        }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $status = 'work';
-            echo json_encode($status);
-        }
+        echo $_GET['name'];
+        exit;
 
+        echo $film;
 
-        //print_r("Hello Test");
+        print_r("Hello GET!");
     }
 
-    public function requestAction()
+    /*POST*/
+    public function postAction()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $data = array(
-            'neighbor0' => 'Vlad',
-            'neighbor1' => 'Danya'
-        );
+        $model = new Model();
+        $film = $model->getFilm();
 
-        echo json_encode($data);
-        } else {
-            $request = "POST";
-            echo json_encode($request);
-        }
+        $data = file_get_contents("php://input");
+
+        echo $data;
+    }
+
+    /*PUT*/
+    public function putAction()
+    {
+        $data = file_get_contents('php://input');
+
+        echo $data;
+    }
+
+    /*DELETE*/
+    public function deleteAction()
+    {
+
     }
 }

@@ -48,6 +48,7 @@ final Class Router
         }
 
         $actionName = $actionName .'Action';
+        $actionName = $this->nameActionREST($controllerName, $actionName);
 
         if(!empty($this->url[3])) {
             $value = (int)$this->url[3];
@@ -80,5 +81,15 @@ final Class Router
         }
 
         return print_r("Error 404");
+    }
+
+    private function nameActionREST($controllerName, $actionName)
+    {
+        if ($controllerName === "ApiController"){
+
+           return mb_strtolower($_SERVER['REQUEST_METHOD']).'Action';
+        }
+
+        return $actionName;
     }
 }
